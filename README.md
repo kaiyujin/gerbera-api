@@ -14,12 +14,19 @@ rbenv global 2.5.0
 rbenv exec gem install bundler
 xcode-select --install
 rails new gerbera -d mysql --api
+docker-machine create gerbera
+docker-machine regenerate-certs gerbera
+docker-machine start gerbera
+eval "$(docker-machine env default)"
 ```
 
+# run
+`rails s`
 
 Things you may want to cover:
 
-* Ruby version
+* Ruby version  
+2.5.0  
 
 * System dependencies
 
@@ -35,4 +42,9 @@ Things you may want to cover:
 
 * Deployment instructions
 
-* ...
+* rails new   
+`bundle exec rails g scaffold reservations`
+* migrate  
+`rails db:migrate`
+`docker-compose run --rm rails rake db:create`
+
