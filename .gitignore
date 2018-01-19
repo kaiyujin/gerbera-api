@@ -14,5 +14,7 @@
 !/tmp/.keep
 
 .byebug_history
+jwt-private.pem
+jwt-public.pem
 
 /volums/*
