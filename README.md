@@ -18,8 +18,9 @@ docker-machine create gerbera
 docker-machine regenerate-certs gerbera
 docker-machine start gerbera
 eval "$(docker-machine env default)"
-openssl genrsa 2048 > jwt-private.pem
-openssl rsa -in jwt-private.pem -pubout -out jwt-public.pem
+
+openssl genrsa 2048 > ./config/jwt-private.pem
+openssl rsa -in config/jwt-private.pem -pubout -out config/jwt-public.pem
 ```
 
 # run
