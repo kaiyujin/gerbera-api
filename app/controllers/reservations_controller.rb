@@ -5,7 +5,7 @@ class ReservationsController < ApplicationController
   # GET /reservations
   def index
     @reservations = Reservation.all
-
+    logger.debug(current_user.to_json)
     render json: @reservations
   end
 
