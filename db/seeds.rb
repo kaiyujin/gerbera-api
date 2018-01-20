@@ -66,6 +66,7 @@ users = []
       email: 'test@user.com',
       shop_id: shops.sample.id,
       auth_type: i,
+      enable: 1,
       password: 'test',
       password_confirmation: 'test',
       created_by: 1,
@@ -74,3 +75,18 @@ users = []
   )
 end
 User.import users
+users = User.all
+
+Authority.destroy_all
+authorities = []
+5.times do |i|
+  authorities << Authority.new(
+    {
+      user_id: users[0].id,
+      shop_id: shops[i].id,
+      created_by: 1,
+      updated_by: 1,
+    }
+  )
+end
+Authority.import authorities
