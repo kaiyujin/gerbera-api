@@ -21,6 +21,10 @@ eval "$(docker-machine env default)"
 
 openssl genrsa 2048 > ./config/jwt-private.pem
 openssl rsa -in config/jwt-private.pem -pubout -out config/jwt-public.pem
+
+docker-compose up --build -d
+docker-compose stop
+docker-compose start
 ```
 
 # run
@@ -51,4 +55,12 @@ Things you may want to cover:
 `docker-compose run --rm api rake db:create db:migrate`  
 `docker-compose run api rake db:migrate`  
 `docker-compose run api rake db:seed`  
-`docker-compose run api rails dbconsole development`  
+`docker-compose run api rails dbconsole development`
+
+* login
+`$ curl -X "POST" "http://localhost/user_token" -H "Content-Type: application/json" -d $'{"auth": {"email": "test@user.com", "password": "test"}}'
+`
+{"jwt":"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE1MTY1MTM0MzQsInN1YiI6MX0.n23PmXaVadVn6G1yNWv8VxC_i8tBBOAiYSdam4DO8w0"}
+`$ curl -X "GET" "http://localhost/reservations" -H "Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE1MTY1MTM0MzQsInN1YiI6MX0.n23PmXaVadVn6G1yNWv8VxC_i8tBBOAiYSdam4DO8w0" -H "Content-Type: application/json"
+`
+[]
