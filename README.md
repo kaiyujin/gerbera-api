@@ -50,12 +50,12 @@ Things you may want to cover:
 * Deployment instructions
 
 * rails new   
-`bundle exec rails g scaffold reservations`
+`docker-compose run --rm api bundle exec rails g scaffold shops`
 * migrate  
 `docker-compose run --rm api rake db:create db:migrate`  
-`docker-compose run api rake db:migrate`  
-`docker-compose run api rake db:seed`  
-`docker-compose run api rails dbconsole development`
+`docker-compose run --rm api rake db:migrate`  
+`docker-compose run --rm api rake db:seed`  
+`docker-compose run --rm api rails dbconsole development`
 
 * login
 `$ curl -X "POST" "http://localhost/user_token" -H "Content-Type: application/json" -d $'{"auth": {"email": "test@user.com", "password": "test"}}'
