@@ -44,3 +44,4 @@ gem "faker"
 gem "bcrypt"
 gem "jsonapi-resources"
 gem "knock"
+gem 'activerecord-import'

@@ -23,18 +23,20 @@ ActiveRecord::Schema.define(version: 20180120113220) do
     t.integer "state_id"
     t.integer "city_id"
     t.string "address"
+    t.integer "created_by"
+    t.integer "updated_by"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
   create_table "reservations", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string "name", null: false
-    t.integer "status_id", limit: 1, null: false
+    t.integer "status_id", limit: 2, null: false
     t.datetime "date_time", null: false
-    t.integer "stay_time", limit: 3, null: false
+    t.integer "stay_time", limit: 2, null: false
     t.integer "shop_id", null: false
-    t.integer "persons", limit: 3, null: false
-    t.integer "children", limit: 3, null: false
+    t.integer "persons", limit: 2, null: false
+    t.integer "children", limit: 2, null: false
     t.integer "inflow_id", null: false
     t.integer "created_by"
     t.integer "updated_by"
@@ -57,7 +59,8 @@ ActiveRecord::Schema.define(version: 20180120113220) do
     t.integer "state_id"
     t.integer "city_id"
     t.string "address"
-    t.integer "sort_no", default: 1
+    t.integer "sort_no", default: 1, null: false
+    t.integer "test_flg", limit: 1, default: 0
     t.integer "created_by"
     t.integer "updated_by"
     t.datetime "closed_at"
@@ -69,8 +72,8 @@ ActiveRecord::Schema.define(version: 20180120113220) do
     t.string "password_digest"
     t.string "name"
     t.string "email"
-    t.string "shop_id"
-    t.integer "type", limit: 1, null: false
+    t.integer "shop_id"
+    t.integer "auth_type", limit: 2, null: false
     t.integer "created_by"
     t.integer "updated_by"
     t.datetime "created_at", null: false

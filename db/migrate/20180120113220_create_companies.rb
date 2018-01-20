@@ -12,6 +12,8 @@ class CreateCompanies < ActiveRecord::Migration[5.1]
       t.integer :state_id   # 都市
       t.integer :city_id    # 市区町村
       t.string :address     # 住所
+      t.integer :created_by
+      t.integer :updated_by
       t.timestamps
     end
   end

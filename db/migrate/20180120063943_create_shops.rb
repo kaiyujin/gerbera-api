@@ -15,7 +15,8 @@ class CreateShops < ActiveRecord::Migration[5.1]
       t.integer :state_id   # 都市
       t.integer :city_id    # 市区町村
       t.string :address     # 住所
-      t.integer :sort_no, default: 1 # 表示順
+      t.integer :sort_no, default: 1, null: false # 表示順
+      t.integer :test_flg, default: 0, limit: 1
       t.integer :created_by
       t.integer :updated_by
       t.datetime :closed_at
