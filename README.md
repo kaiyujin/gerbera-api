@@ -48,6 +48,7 @@ Things you may want to cover:
 * rails new   
 `bundle exec rails g scaffold reservations`
 * migrate  
-`rails db:migrate`
-`docker-compose run --rm rails rake db:create`
-
+`docker-compose run --rm api rake db:create db:migrate`  
+`docker-compose run api rake db:migrate`  
+`docker-compose run api rake db:seed`  
+`docker-compose run api rails dbconsole development`  

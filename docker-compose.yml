@@ -6,11 +6,11 @@ services:
       - /share
       - ./volums/mysql/volumes:/var/lib/mysql
       - ./volums/redis_data:/data
-  rails:
-    container_name: rails
+  api:
+    container_name: api
     build:
       context: .
-      dockerfile: ./docker/rails/Dockerfile
+      dockerfile: ./docker/api/Dockerfile
     command: bundle exec unicorn -p 3000 -c ./config/unicorn.rb
     ports:
       - '3000:3000'
@@ -18,16 +18,12 @@ services:
       RAILS_ENV: development
       MYSQL_ROOT_PASSWORD: 'root'
       DATABASE_URL: 'mysql2://root:root@db:3306'
-    depends_on:
-      - db
     volumes:
       - ./:/app
     volumes_from:
       - datastore
     depends_on:
       - datastore
-      - db
-    links:
       - db
       - redis
   nginx:
